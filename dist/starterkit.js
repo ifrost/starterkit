@@ -75,7 +75,9 @@ console.log(App);
 /* 1 */
 /***/ (function(module, exports) {
 
-module.exports = "Hello";
+module.exports = function(a, b) {
+    return a + b;
+}
 
 /***/ })
 /******/ ]);
