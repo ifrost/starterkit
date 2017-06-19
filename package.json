@@ -1,0 +1,32 @@
+{
+  "name": "starterkit",
+  "version": "0.0.2",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "build": "node node_modules/webpack/bin/webpack.js index.js dist/starterkit.js",
+    "test": "node node_modules/mocha/bin/mocha --recursive",
+    "preversion": "npm test",
+    "version": "npm run build && git add .",
+    "postversion": "git push && git push --tags && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ifrost/starterkit.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ifrost/starterkit/issues"
+  },
+  "homepage": "https://github.com/ifrost/starterkit#readme",
+  "devDependencies": {
+    "chai": "^4.0.2",
+    "mocha": "^3.4.2",
+    "sinon": "^2.3.4",
+    "webpack": "^3.0.0"
+  }
+}
