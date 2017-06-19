@@ -7,8 +7,10 @@
     "lib": "lib"
   },
   "scripts": {
-    "build": "node node_modules/webpack/bin/webpack.js index.js dist/starterkit.js",
-    "test": "node node_modules/mocha/bin/mocha --recursive",
+    "build": "webpack index.js dist/starterkit.js",
+    "test": "mocha --recursive",
+    "coverage": "istanbul cover node_modules/mocha/bin/_mocha -- -R spec",
+    "codecov": "codecov",
     "preversion": "npm test",
     "version": "npm run build && git add .",
     "postversion": "git push && git push --tags && npm publish"
@@ -25,6 +27,8 @@
   "homepage": "https://github.com/ifrost/starterkit#readme",
   "devDependencies": {
     "chai": "^4.0.2",
+    "codecov": "^2.2.0",
+    "istanbul": "^0.4.5",
     "mocha": "^3.4.2",
     "sinon": "^2.3.4",
     "webpack": "^3.0.0"
