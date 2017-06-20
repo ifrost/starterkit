@@ -7,8 +7,7 @@ Starter kit includes:
   * Node app bootstrap build for browsers with webpack (dist/starterkit.js)
   * Test suite with mocha/chai/sinon
   * Code coverage generated with istanbul
-  * TraviCI config
-  * Codacy config
+  * TravisCI config
   * ESLint config
   * JSDoc config
   * Build & publish scripts
@@ -16,7 +15,8 @@ Starter kit includes:
   
 Add project to:
 
-  * https://travis-ci.org/
-  * https://codecov.io
-  * https://snyk.io/
-  * https://www.codacy.com
+  * https://travis-ci.org - to test branches continuously
+  * https://codecov.io - to report test coverage
+  * https://snyk.io - to check vulnerabilities in your code and dependencies
+  * https://www.codacy.com - for automatic code checks
+  * https://greenkeeper.io - to keep dependencies up to date
