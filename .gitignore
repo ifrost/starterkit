@@ -4,5 +4,5 @@ docs/code/
 local/
 .idea/
 
-changes.log
+changelog.txt
 npm-debug.log
