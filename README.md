@@ -10,8 +10,10 @@ Starter kit includes:
   * TravisCI config
   * ESLint config
   * JSDoc config
-  * Build & publish scripts
+  * Build & publish npm-scripts
   * README.md with badges
+  * scripts/
+    * changelog.js - generates changes since last tag
   
 Add project to:
 
