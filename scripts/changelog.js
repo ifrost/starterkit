@@ -10,7 +10,7 @@ var execSync = require("child_process").execSync;
 function getRepoUrl() {
     var repoUrl = process.argv[2];
     repoUrl += repoUrl.endsWith("/") ? "" : "/";
-    return repoUrl
+    return repoUrl;
 }
 
 function getCurrentTag() {

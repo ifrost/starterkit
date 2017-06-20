@@ -7,7 +7,7 @@
     "lib": "lib"
   },
   "scripts": {
-    "eslint": "eslint lib/**/*.js",
+    "eslint": "eslint lib/**/*.js scripts/**/*.js",
     "doc": "jsdoc -c jsdoc.conf.json -R README.md -P package.json -t node_modules/docdash -u docs/tutorials",
     "build": "webpack index.js dist/starterkit.js",
     "test": "npm run eslint && mocha --recursive",
