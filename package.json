@@ -8,6 +8,7 @@
   },
   "scripts": {
     "eslint": "eslint lib/**/*.js",
+    "doc": "jsdoc -c jsdoc.conf.json -R README.md -P package.json -t node_modules/docdash -u docs/tutorials",
     "build": "webpack index.js dist/starterkit.js",
     "test": "npm run eslint && mocha --recursive",
     "coverage": "istanbul cover node_modules/mocha/bin/_mocha -- -R spec",
@@ -29,6 +30,7 @@
   "devDependencies": {
     "chai": "^4.0.2",
     "codecov": "^2.2.0",
+    "docdash": "^0.4.0",
     "eslint": "^4.0.0",
     "istanbul": "^0.4.5",
     "jsdoc": "^3.4.3",
