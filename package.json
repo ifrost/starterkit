@@ -13,7 +13,7 @@
     "test": "npm run eslint && mocha --recursive",
     "coverage": "istanbul cover node_modules/mocha/bin/_mocha -- -R spec",
     "codecov": "codecov",
-    "preversion": "npm test",
+    "preversion": "npm test && node scripts/changelog.js https://github.com/ifrost/starterkit",
     "version": "npm run build && git add .",
     "postversion": "git push && git push --tags && npm publish"
   },
