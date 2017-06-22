@@ -20,7 +20,8 @@ function getCurrentTag() {
 }
 
 function getChanges(currentTag, repoUrl) {
-    var listChangesCommand =  "git log " + currentTag + "..HEAD --pretty=format:\"* [[`%h`](" + repoUrl + "commit/%h)] - %s\"";
+    var prettyFormat = "\"* [[`%h`](" + repoUrl + "commit/%h)] - %s\"";
+    var listChangesCommand =  "git log " + currentTag + "..HEAD --pretty=format:" + prettyFormat;
     return execSync(listChangesCommand, {encoding: 'utf-8'});
 }
 
