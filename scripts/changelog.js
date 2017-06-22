@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /**
  * This script will generate changelog.txt file with list of all the commits since the last tag
  *
