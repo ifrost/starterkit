@@ -5,7 +5,7 @@
  */
 
 var fs = require("fs");
-var readline = require('readline');
+var readline = require("readline");
 var path = require("path");
 var source = path.resolve(__dirname, "..");
 var dest = process.cwd();
@@ -47,16 +47,16 @@ function copy(filename, opts) {
     fs.writeFileSync(targetFile, sourceFileContent);
 }
 
-function install() {
-    log("Copying all files from ", source, "to", dest);
-
+function createDirs() {
     mkdir(path.resolve(dest, "dist"));
     mkdir(path.resolve(dest, "docs"));
     mkdir(path.resolve(dest, "docs", "tutorials"));
     mkdir(path.resolve(dest, "lib"));
     mkdir(path.resolve(dest, "scripts"));
     mkdir(path.resolve(dest, "test"));
+}
 
+function copyFiles() {
     copy(".travis.yml");
     copy(".eslintrc.json");
     copy(".gitignore");
@@ -68,7 +68,14 @@ function install() {
     copy(["lib", "app.js"]);
     copy(["scripts", "changelog.js"]);
     copy(["test", "test.js"]);
+}
 
+function install() {
+    log("Copying all files from ", source, "to", dest);
+    
+    createDirs();
+    copyFiles();
+    
     projectConfig.scripts = starterkitConfig.scripts;
     projectConfig.devDependencies = starterkitConfig.devDependencies;
 
@@ -83,7 +90,10 @@ function main() {
         output: process.stdout
     });
 
-    ask.question("This script will override files in the current directory including package.json. Type Y to continue. ", function(response){
+    var prompt = "This script will override files in the current directory including package.json." +
+        " Type Y to continue. ";
+    
+    ask.question(prompt, function(response){
         if (response === "Y") {
             install();
         }
