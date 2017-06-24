@@ -16,22 +16,22 @@ function getRepoUrl() {
 }
 
 function getCurrentTag() {
-    return execSync("git describe --abbrev=0", {encoding: 'utf-8'}).trim();
+    return execSync("git describe --abbrev=0", {encoding: "utf-8"}).trim();
 }
 
 function getChanges(currentTag, repoUrl) {
     var prettyFormat = "\"* [[`%h`](" + repoUrl + "commit/%h)] - %s\"";
     var listChangesCommand =  "git log " + currentTag + "..HEAD --pretty=format:" + prettyFormat;
-    return execSync(listChangesCommand, {encoding: 'utf-8'});
+    return execSync(listChangesCommand, {encoding: "utf-8"});
 }
 
 function save(fileContent) {
-    fs.writeFile('changelog.txt', fileContent, {encoding: 'utf-8'});
+    fs.writeFile("changelog.txt", fileContent, {encoding: "utf-8"});
 }
 
 function main() {
     if (!process.argv[2]) {
-        console.log('Provide repo url as the first argument.');
+        process.stdout.write("Provide repo url as the first argument.\n");
         return;
     }
 
