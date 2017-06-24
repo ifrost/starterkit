@@ -22,3 +22,13 @@ Add project to:
   * https://snyk.io - to check vulnerabilities in your code and dependencies
   * https://www.codacy.com - for automatic code checks
   * https://greenkeeper.io - to keep dependencies up to date
+
+# NPM script commands
+
+  * **eslint** - runs linting with esliint
+  * **doc** - generates documentation in docs/code
+  * **build** - creates browser build
+  * **test** - runs tests
+  * **coverage** - generates test coverage report
+  * **codecov** - publishes coverage report (part of travisCI config, see .travis.yml)
+  * **version** - releases new version (runs tests, generates changelog, builds the project, adds changes to git and publishes to npm)
