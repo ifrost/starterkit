@@ -25,23 +25,25 @@ function mkdir(dirname) {
 }
 
 function copy(filename, opts) {
+    opts = opts || {};
+
     var resolveSource = [source];
     var resolverTarget = [dest];
 
     if (Array.prototype.isPrototypeOf(filename)) {
         resolveSource = resolveSource.concat(filename);
-        resolverTarget = resolverTarget.concat(filename);
+        resolverTarget = resolverTarget.concat(opts.targetFileName || filename);
     }
     else {
         resolveSource.push(filename);
-        resolverTarget.push(filename);
+        resolverTarget.push(opts.targetFileName || filename);
     }
 
     var sourceFile = path.resolve.apply(path, resolveSource);
     var targetFile = path.resolve.apply(path, resolverTarget);
     log(sourceFile, "-->", targetFile);
     var sourceFileContent = fs.readFileSync(sourceFile, {encoding: "utf-8"});
-    if (opts && opts.replace) {
+    if (opts.replace) {
         sourceFileContent = sourceFileContent.replace(new RegExp(opts.replace[0], "g"), opts.replace[1]);
     }
     fs.writeFileSync(targetFile, sourceFileContent);
@@ -59,7 +61,7 @@ function createDirs() {
 function copyFiles() {
     copy(".travis.yml");
     copy(".eslintrc.json");
-    copy(".gitignore");
+    copy(".gitignore.template", {targetFileName: ".gitignore"});
     copy("index.html", {replace: ["starterkit.js", projectName + ".js"]});
     copy("jsdoc.conf.json");
     copy("LICENSE", {replace: ["starterkit", projectName]});
