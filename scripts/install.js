@@ -24,9 +24,7 @@ function mkdir(dirname) {
     }
 }
 
-function copy(filename, opts) {
-    opts = opts || {};
-
+function resolveNames(filename, opts) {
     var resolveSource = [source];
     var resolverTarget = [dest];
 
@@ -39,8 +37,19 @@ function copy(filename, opts) {
         resolverTarget.push(opts.targetFileName || filename);
     }
 
-    var sourceFile = path.resolve.apply(path, resolveSource);
-    var targetFile = path.resolve.apply(path, resolverTarget);
+    return {
+        source: resolveSource,
+        target: resolverTarget
+    };
+}
+
+function copy(filename, opts) {
+    opts = opts || {};
+
+    var names = resolveNames(filename, opts);
+    
+    var sourceFile = path.resolve.apply(path, names.source);
+    var targetFile = path.resolve.apply(path, names.target);
     log(sourceFile, "-->", targetFile);
     var sourceFileContent = fs.readFileSync(sourceFile, {encoding: "utf-8"});
     if (opts.replace) {
