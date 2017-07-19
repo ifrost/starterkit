@@ -29,6 +29,10 @@ function save(fileContent) {
     fs.writeFile("changelog.txt", fileContent, {encoding: "utf-8"});
 }
 
+function print(content) {
+    console.log(content);
+}
+
 function main() {
     if (!process.argv[2]) {
         process.stdout.write("Provide repo url as the first argument.\n");
@@ -38,7 +42,14 @@ function main() {
     var currentTag = getCurrentTag();
     var repoUrl = getRepoUrl();
     var changes = getChanges(currentTag, repoUrl);
-    save("Changes:\n\n" + changes);
+    var log = "Changes:\n\n" + changes;
+
+    if (process.argv[3] === 'console') {
+        print(log);
+    }
+    else {
+        save(log);
+    }
 }
 
 main();
