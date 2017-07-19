@@ -16,9 +16,9 @@
     "test": "npm run eslint && mocha --recursive",
     "coverage": "istanbul cover node_modules/mocha/bin/_mocha -- -R spec",
     "codecov": "codecov",
-    "preversion": "npm test && node scripts/changelog.js https://github.com/ifrost/starterkit",
+    "preversion": "node scripts/changelog.js https://github.com/ifrost/starterkit console",
     "version": "npm run build && git add .",
-    "postversion": "git push && git push --tags && npm publish"
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
