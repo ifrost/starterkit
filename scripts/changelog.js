@@ -30,7 +30,7 @@ function save(fileContent) {
 }
 
 function print(content) {
-    console.log(content);
+    console.log(content); // eslint-disable-line
 }
 
 function main() {
@@ -44,7 +44,7 @@ function main() {
     var changes = getChanges(currentTag, repoUrl);
     var log = "Changes:\n\n" + changes;
 
-    if (process.argv[3] === 'console') {
+    if (process.argv[3] === "console") {
         print(log);
     }
     else {
