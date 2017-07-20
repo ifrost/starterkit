@@ -7,7 +7,7 @@ script:
 deploy:
   - provider: script
     skip_cleanup: true
-    script: scripts/deploy.sh
+    script: /bin/sh scripts/deploy.sh
     on:
       branch: master
   - provider: pages
