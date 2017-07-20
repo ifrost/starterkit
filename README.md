@@ -4,7 +4,7 @@
 
 Starter kit includes:
 
-  * Node app + webpack to (dist/starterkit.js)
+  * Node app + webpack (dist/starterkit.js)
   * Test suite with mocha/chai/sinon
   * Code coverage generated with istanbul
   * TravisCI config
