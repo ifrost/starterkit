@@ -5,7 +5,11 @@ script:
 - npm run coverage
 - npm run codecov
 before_deploy:
+  - git.config --global user.email "travis@travis-ci.org"
+  - git.config --global user.name "Travis CI"
   - npm version $VERSION_INCREMENT
+after_deploy:
+  - git push --tags
 deploy:
   - provider: pages
     skip_cleanup: true
