@@ -2,7 +2,7 @@ language: node_js
 node_js: 6
 branches:
   except:
-    - /^v[0-9]/
+    - /^v?\d+\.\d+\.\d+$/
 script:
   - npm test
   - npm run coverage
