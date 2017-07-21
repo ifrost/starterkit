@@ -18,7 +18,7 @@
     "codecov": "codecov",
     "preversion": "node scripts/changelog.js https://github.com/ifrost/starterkit console",
     "version": "npm run build && git add .",
-    "postversion": "git push --follow-tags"
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
