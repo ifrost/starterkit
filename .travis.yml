@@ -1,5 +1,8 @@
 language: node_js
 node_js: 6
+branches:
+  except:
+    - /^v?[0-9]/
 script:
   - npm test
   - npm run coverage
@@ -9,7 +12,7 @@ deploy:
     skip_cleanup: true
     script: /bin/sh scripts/version.sh
     on:
-     condition: ! $TRAVIS_COMMIT_MESSAGE =~ ^v?\d+\.\d+\.\d+$
+     condition: $TRAVIS_TAG = ''
   - provider: pages
     skip_cleanup: true
     github_token: $GITHUB_API_KEY
