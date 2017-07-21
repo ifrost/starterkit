@@ -10,11 +10,10 @@ script:
 deploy:
   - provider: script
     skip_cleanup: true
-    script: /bin/sh scripts/deploy.sh
+    script: /bin/sh scripts/version.sh
     on:
       branch: master
       tags: false
-      tag: true
   - provider: pages
     skip_cleanup: true
     github_token: $GITHUB_API_KEY
