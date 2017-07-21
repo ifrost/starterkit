@@ -13,7 +13,6 @@ deploy:
     script: /bin/sh scripts/version.sh
     on:
       branch: master
-      tags: false
   - provider: pages
     skip_cleanup: true
     github_token: $GITHUB_API_KEY
