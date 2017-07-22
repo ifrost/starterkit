@@ -1,8 +1,5 @@
 language: node_js
 node_js: 6
-branches:
-  except:
-    - /^\d+\.\d+\.\d+/
 script:
   - npm test
   - npm run coverage
