@@ -31,4 +31,4 @@ Add project to:
   * **test** - runs tests
   * **coverage** - generates test coverage report
   * **codecov** - publishes coverage report (part of travisCI config, see .travis.yml)
-  * **version** - releases new version (runs tests, generates changelog, builds the project, adds changes to git and publishes to npm)
+  * **version** - releases new version (runs tests, generates changelog, builds the project, adds changes to git and tags it)
