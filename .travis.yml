@@ -17,7 +17,7 @@ deploy:
     skip_cleanup: true
     script:  /bin/sh scripts/version.sh patch
     on:
-      branch: /$hotfix/
+      branch: hotfix*
   - provider: pages
     skip_cleanup: true
     github_token: $GITHUB_API_KEY
@@ -30,4 +30,4 @@ deploy:
     on:
       branch:
         - release
-        - /$hotfix/
+        - hotfix*
