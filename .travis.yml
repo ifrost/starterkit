@@ -7,7 +7,7 @@ script:
   - npm test
   - npm run coverage
   - npm run codecov
-after_success:
+before_install:
   - git checkout -
 deploy:
   - provider: script
