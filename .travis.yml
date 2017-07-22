@@ -1,5 +1,8 @@
 language: node_js
 node_js: 6
+branches:
+  except:
+    - /^\d+\.\d+\.\d+/
 script:
   - npm test
   - npm run coverage
@@ -7,9 +10,14 @@ script:
 deploy:
   - provider: script
     skip_cleanup: true
-    script: /bin/sh scripts/version.sh
+    script: /bin/sh scripts/version.sh minor
     on:
      branch: master
+  - provider: script
+    skip_cleanup: true
+    script:  /bin/sh scripts/version.sh patch
+    on:
+      branch: /$hotfix/
   - provider: pages
     skip_cleanup: true
     github_token: $GITHUB_API_KEY
