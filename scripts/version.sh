@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# hotfix example
 # ./version.sh path|minor|major
 
 git checkout master
