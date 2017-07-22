@@ -28,4 +28,6 @@ deploy:
     email: $NPM_EMAIL
     api_key: $NPM_API_KEY
     on:
-      branch: release
+      branch:
+        - release
+        - /$hotfix/
