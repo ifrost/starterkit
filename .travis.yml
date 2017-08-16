@@ -1,12 +1,11 @@
 language: node_js
 node_js: 6
-branches:
-  except:
-    - /^\d+\.\d+\.\d+/
 script:
   - npm test
   - npm run coverage
   - npm run codecov
+before_install:
+  - git checkout -
 deploy:
   - provider: script
     skip_cleanup: true
@@ -17,7 +16,7 @@ deploy:
     skip_cleanup: true
     script:  /bin/sh scripts/version.sh patch
     on:
-      branch: /$hotfix/
+      branch: hotfix*
   - provider: pages
     skip_cleanup: true
     github_token: $GITHUB_API_KEY
@@ -28,4 +27,6 @@ deploy:
     email: $NPM_EMAIL
     api_key: $NPM_API_KEY
     on:
-      branch: release
+      branch:
+        - release
+        - hotfix*

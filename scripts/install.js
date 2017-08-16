@@ -67,25 +67,28 @@ function createDirs() {
     mkdir(path.resolve(dest, "test"));
 }
 
-function copyFiles() {
+function copyFiles(options) {
     copy(".travis.yml");
     copy(".eslintrc.json");
     copy(".gitignore.template", {targetFileName: ".gitignore"});
+    copy("README.md.template", {targetFileName: "README.md", replace: ["ifrost/starterkit", options.git.path]});
     copy("index.html", {replace: ["starterkit.js", projectName + ".js"]});
+    copy("index.js");
     copy("jsdoc.conf.json");
     copy("LICENSE", {replace: ["starterkit", projectName]});
 
     copy(["docs", "tutorials", "tutorial.md"]);
     copy(["lib", "app.js"]);
     copy(["scripts", "changelog.js"]);
+    copy(["scripts", "version.sh"]);
     copy(["test", "test.js"]);
 }
 
-function install() {
+function install(options) {
     log("Copying all files from ", source, "to", dest);
     
     createDirs();
-    copyFiles();
+    copyFiles(options);
     
     projectConfig.scripts = starterkitConfig.scripts;
     projectConfig.devDependencies = starterkitConfig.devDependencies;
@@ -106,9 +109,15 @@ function main() {
     
     ask.question(prompt, function(response){
         if (response === "Y") {
-            install();
+            ask.question("Provide GitHub path, e.g. name/project:",function(response) {
+                install({
+                    git: {
+                        path: response
+                    }
+                });
+                ask.close();
+            });
         }
-        ask.close();
     });
 }
 
