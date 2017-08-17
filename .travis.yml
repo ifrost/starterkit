@@ -9,12 +9,17 @@ before_install:
 deploy:
   - provider: script
     skip_cleanup: true
-    script: /bin/sh scripts/version.sh minor
+    script: /bin/sh scripts/version.sh major
     on:
-     branch: master
+     branch: major
   - provider: script
     skip_cleanup: true
-    script:  /bin/sh scripts/version.sh patch
+    script: /bin/sh scripts/version.sh minor
+    on:
+     branch: release
+  - provider: script
+    skip_cleanup: true
+    script: /bin/sh scripts/version.sh patch
     on:
       branch: hotfix*
   - provider: pages
