@@ -53,7 +53,9 @@ function copy(filename, opts) {
     log(sourceFile, "-->", targetFile);
     var sourceFileContent = fs.readFileSync(sourceFile, {encoding: "utf-8"});
     if (opts.replace) {
-        sourceFileContent = sourceFileContent.replace(new RegExp(opts.replace[0], "g"), opts.replace[1]);
+        opts.replace.forEach(function(mapping) {
+            sourceFileContent = sourceFileContent.replace(new RegExp(mapping[0], "g"), mapping[1]);
+        });
     }
     fs.writeFileSync(targetFile, sourceFileContent);
 }
@@ -70,12 +72,32 @@ function createDirs() {
 function copyFiles(options) {
     copy(".travis.yml");
     copy(".eslintrc.json");
+    copy("webpack.config.js", {
+        replace: [
+            ["starterkit.js", projectName + ".js"]
+        ]
+    });
     copy(".gitignore.template", {targetFileName: ".gitignore"});
-    copy("README.md.template", {targetFileName: "README.md", replace: ["ifrost/starterkit", options.git.path]});
-    copy("index.html", {replace: ["starterkit.js", projectName + ".js"]});
+
+    copy("README.md.template", {
+        targetFileName: "README.md",
+        replace: [
+            ["ifrost/starterkit", options.git.path],
+            ["starterkit", projectName]
+        ]
+    });
+    copy("index.html", {
+        replace: [
+            ["starterkit.js", projectName + ".js"]
+        ]
+    });
     copy("index.js");
     copy("jsdoc.conf.json");
-    copy("LICENSE", {replace: ["starterkit", projectName]});
+    copy("LICENSE", {
+        replace: [
+            ["starterkit", projectName]
+        ]
+    });
 
     copy(["docs", "tutorials", "tutorial.md"]);
     copy(["lib", "app.js"]);
@@ -93,6 +115,14 @@ function install(options) {
     projectConfig.scripts = starterkitConfig.scripts;
     projectConfig.devDependencies = starterkitConfig.devDependencies;
 
+    for (var scriptName in projectConfig.scripts) {
+        if (projectConfig.scripts.hasOwnProperty(scriptName)) {
+            projectConfig.scripts[scriptName] = projectConfig.scripts[scriptName]
+                .replace(new RegExp("ifrost/starterkit", "g"), options.git.path)
+                .replace(new RegExp("starterkit", "g"), projectName);
+        }
+    }
+
     fs.writeFileSync(path.resolve(dest, "package.json"), JSON.stringify(projectConfig, undefined, 4));
 
     log("Done.");
@@ -109,10 +139,10 @@ function main() {
     
     ask.question(prompt, function(response){
         if (response === "Y") {
-            ask.question("Provide GitHub path, e.g. name/project:",function(response) {
+            ask.question("Provide GitHub path, e.g. name/project: ",function(response) {
                 install({
                     git: {
-                        path: response
+                        path: response || "name/project"
                     }
                 });
                 ask.close();
