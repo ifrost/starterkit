@@ -9,24 +9,32 @@ before_install:
 deploy:
   - provider: script
     skip_cleanup: true
-    script: /bin/sh scripts/version.sh minor
+    script: /bin/sh scripts/version.sh major
     on:
-     branch: master
+      branch: major
   - provider: script
     skip_cleanup: true
-    script:  /bin/sh scripts/version.sh patch
+    script: /bin/sh scripts/version.sh minor
+    on:
+      branch: release
+  - provider: script
+    skip_cleanup: true
+    script: /bin/sh scripts/version.sh patch
     on:
       branch: hotfix*
   - provider: pages
     skip_cleanup: true
     github_token: $GITHUB_API_KEY
     on:
-      branch: release
+      branch:
+        - major
+        - release
   - provider: npm
     skip_cleanup: true
     email: $NPM_EMAIL
     api_key: $NPM_API_KEY
     on:
       branch:
+        - major
         - release
         - hotfix*
