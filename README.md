@@ -19,11 +19,18 @@
 ## Installation:
 
 ```
+> mkdir my-project
 > cd my-project
+> npm init
 > npm install --save-dev starterkit
 > node node_modules\starterkit\scripts\install.js
 ```
-  
+ 
+## Create branches
+
+  * release
+  * gh-pages
+ 
 ## Add project to:
 
   * https://travis-ci.org - to test branches continuously
