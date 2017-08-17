@@ -1,12 +1,12 @@
+const path = require('path');
+
 module.exports = {
-    entry: "./index.js",
-    output: {
-        path: __dirname,
-        filename: "dist/starterkit.js"
+    entry: {
+        index: './index.js'
     },
-    module: {
-        loaders: [
-            { test: /\.css$/, loader: "style!css" }
-        ]
+    output: {
+        filename: 'starterkit.js',
+        libraryTarget: "umd",
+        path: path.resolve(__dirname, 'dist')
     }
 };
