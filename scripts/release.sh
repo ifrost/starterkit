@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Script performs tagging and releasing to gh-pages
 
