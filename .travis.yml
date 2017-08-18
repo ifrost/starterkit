@@ -1,10 +1,7 @@
 language: node_js
 node_js: 6
 branches:
-  only:
-    - master
-    - /^hotfix.*$/
-    - /^feature.*$/
+  except: /^v\d+\.\d+(\.\d+)?(-\S*)?$/
 script:
   - npm test
   - npm run coverage
