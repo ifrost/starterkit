@@ -9,32 +9,15 @@ before_install:
 deploy:
   - provider: script
     skip_cleanup: true
-    script: /bin/sh scripts/version.sh major
-    on:
-      branch: major
-  - provider: script
-    skip_cleanup: true
-    script: /bin/sh scripts/version.sh minor
-    on:
-      branch: release
-  - provider: script
-    skip_cleanup: true
-    script: /bin/sh scripts/version.sh patch
-    on:
-      branch: hotfix*
+    script: /bin/sh scripts/release.sh
   - provider: pages
     skip_cleanup: true
     github_token: $GITHUB_API_KEY
     on:
-      branch:
-        - major
-        - release
+      condition: -e tmp/flags/gh-pages
   - provider: npm
     skip_cleanup: true
     email: $NPM_EMAIL
     api_key: $NPM_API_KEY
     on:
-      branch:
-        - major
-        - release
-        - hotfix*
+      tags: true
