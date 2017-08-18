@@ -102,7 +102,7 @@ function copyFiles(options) {
     copy(["docs", "tutorials", "tutorial.md"]);
     copy(["lib", "app.js"]);
     copy(["scripts", "changelog.js"]);
-    copy(["scripts", "version.sh"]);
+    copy(["scripts", "release.sh"]);
     copy(["test", "test.js"]);
 }
 
