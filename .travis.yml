@@ -12,14 +12,18 @@ deploy:
   - provider: script
     skip_cleanup: true
     script: /bin/bash scripts/release.sh
+    on:
+      all_branches: true
   - provider: pages
     skip_cleanup: true
     github_token: $GITHUB_API_KEY
     on:
+      all_branches: true
       condition: -e tmp/flags/gh-pages
   - provider: npm
     skip_cleanup: true
     email: $NPM_EMAIL
     api_key: $NPM_API_KEY
     on:
+      all_branches: true
       condition: -e tmp/flags/npm
