@@ -9,7 +9,7 @@ before_install:
 deploy:
   - provider: script
     skip_cleanup: true
-    script: /bin/sh scripts/release.sh
+    script: ./scripts/release.sh
   - provider: pages
     skip_cleanup: true
     github_token: $GITHUB_API_KEY
