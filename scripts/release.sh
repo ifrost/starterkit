@@ -25,9 +25,11 @@ fi
 
 if [[ $version ]]; then
   npm version $version -m "v%s"
+  mkdir -p tmp/flags
+  touch tmp/flags/npm
 fi
 
 if [[ $message =~ "[gh-pages]" ]]; then
-    mkdir tmp/flags
+    mkdir -p tmp/flags
     touch tmp/flags/gh-pages
 fi
