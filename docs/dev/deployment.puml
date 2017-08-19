@@ -1,0 +1,50 @@
+@startuml
+skinparam monochrome true
+
+start
+
+if (tag) then (no)
+else (yes)
+ stop
+endif
+
+partition "Install" {
+ :install;
+ :test;
+ partition "Coverage" {
+  :codecov;
+  :publish report to Codecov;
+ }
+}
+
+partition "Tagging" {
+
+ if (commit tagged with\n[patch], [minor] or [major]) then (yes)
+   partition "Version {
+     :npm version ...;
+     :tag "vX.X.X";
+     :push to git;
+   }
+   :flag for npm publish;
+ endif
+
+ if (commit tagged with [gh-pages]) then (yes)
+   :flag for gh-pages deploy;
+ endif
+
+}
+
+partition "Deployment" {
+
+ if (flagged for gh-pages deploy) then (yes)
+   :TravisCI: gh-pages deployment;
+ endif
+
+ if (flagged for npm publish) then (yes)
+   :TraviCI: npm publish;
+ endif
+
+}
+
+stop
+@enduml

@@ -1,0 +1,13 @@
+# starterkit
+
+[![Build Status](https://travis-ci.org/ifrost/starterkit.svg?branch=master)](https://travis-ci.org/ifrost/starterkit) [![codecov](https://codecov.io/gh/ifrost/starterkit/branch/master/graph/badge.svg)](https://codecov.io/gh/ifrost/starterkit) [![Known Vulnerabilities](https://snyk.io/test/github/ifrost/starterkit/badge.svg)](https://snyk.io/test/github/ifrost/starterkit) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/f5cb26d7c6304aeca5d8550876b9aa24)](https://www.codacy.com/app/ifrost/starterkit?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ifrost/starterkit&amp;utm_campaign=Badge_Grade) [![Greenkeeper badge](https://badges.greenkeeper.io/ifrost/starterkit.svg)](https://greenkeeper.io/)
+
+# NPM script commands
+
+  * **eslint** - runs linting with esliint
+  * **doc** - generates documentation in docs/code
+  * **build** - creates browser build
+  * **test** - runs tests
+  * **coverage** - generates test coverage report
+  * **codecov** - publishes coverage report (part of travisCI config, see .travis.yml)
+  * **version** - releases new version (runs tests, generates changelog, builds the project, adds changes to git and tags it)

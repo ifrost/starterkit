@@ -1,0 +1,44 @@
+{
+  "name": "starterkit",
+  "version": "0.16.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "bin": {
+    "starterkit-install": "./scripts/install.js"
+  },
+  "scripts": {
+    "eslint": "eslint --format=table lib/**/*.js scripts/**/*.js",
+    "doc": "jsdoc -c jsdoc.conf.json -R README.md -P package.json -t node_modules/docdash -u docs/tutorials",
+    "build": "webpack",
+    "test": "npm run eslint && mocha --recursive",
+    "coverage": "istanbul cover node_modules/mocha/bin/_mocha -- -R spec",
+    "codecov": "codecov",
+    "preversion": "git fetch --tags && node scripts/changelog.js https://github.com/ifrost/starterkit console",
+    "version": "npm run build && git add .",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ifrost/starterkit.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ifrost/starterkit/issues"
+  },
+  "homepage": "https://github.com/ifrost/starterkit#readme",
+  "devDependencies": {
+    "chai": "^4.0.2",
+    "codecov": "^2.2.0",
+    "docdash": "^0.4.0",
+    "eslint": "^4.0.0",
+    "istanbul": "^0.4.5",
+    "jsdoc": "^3.4.3",
+    "mocha": "^3.4.2",
+    "sinon": "^3.0.0",
+    "webpack": "^3.0.0"
+  }
+}
