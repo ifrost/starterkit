@@ -10,7 +10,7 @@ git config --global user.name "Travis CI"
 git config credential.helper "store --file=.git/credentials"
 echo "https://${GITHUB_API_KEY}:@github.com" > .git/credentials
 
-message=`git log -1 --pretty=%B`
+message=$(git log -1 --pretty=%B)
 echo "Last message: $message"
 
 if [[ $message =~ "[major]" ]]; then
