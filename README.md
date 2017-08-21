@@ -25,6 +25,17 @@
 > npm install --save-dev starterkit
 > node node_modules\starterkit\scripts\install.js
 ```
+
+## Configure Travis CI
+
+  * Add GITHUB_API_KEY - GitHub / Profile / Settings / Personal Access Tokens (select public_repo)
+  * Add NPM_API_KEY - authToken from ~/.npmrc
+  * Add NPM_EMAIL - your email
+  * Select Auto cancel branch builds
+  * Select General section:
+    * Build only if .travis.yml is present
+    * Build branch updates
+    * Build pull request updates
  
 ## Create branches
 
