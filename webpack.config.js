@@ -7,6 +7,7 @@ module.exports = {
     output: {
         filename: 'starterkit.js',
         libraryTarget: "umd",
+        library: 'starterkit',
         path: path.resolve(__dirname, 'dist')
     }
 };

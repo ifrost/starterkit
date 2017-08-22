@@ -74,7 +74,7 @@ function copyFiles(options) {
     copy(".eslintrc.json");
     copy("webpack.config.js", {
         replace: [
-            ["starterkit.js", projectName + ".js"]
+            ["starterkit", projectName]
         ]
     });
     copy(".gitignore.template", {targetFileName: ".gitignore"});
