@@ -7,8 +7,6 @@ script:
   - npm test
   - npm run coverage
   - npm run codecov
-before_install:
-  - git checkout -
 deploy:
   - provider: script
     skip_cleanup: true
