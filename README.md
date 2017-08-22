@@ -48,6 +48,7 @@
   * https://codecov.io - to report test coverage
   * https://snyk.io - to check vulnerabilities in your code and dependencies
   * https://www.codacy.com - for automatic code checks
+  ** Add Codacy badge to README.md
   * https://greenkeeper.io - to keep dependencies up to date
 
 # NPM script commands
