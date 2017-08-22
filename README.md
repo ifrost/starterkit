@@ -24,6 +24,7 @@
 > npm init
 > npm install -g starterkit
 > starterkit-install
+> npm install
 ```
 
 ## Configure Travis CI
