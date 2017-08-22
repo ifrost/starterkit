@@ -22,8 +22,8 @@
 > mkdir my-project
 > cd my-project
 > npm init
-> npm install --save-dev starterkit
-> node node_modules\starterkit\scripts\install.js
+> npm install -g starterkit
+> starterkit-install
 ```
 
 ## Configure Travis CI
