@@ -27,6 +27,7 @@
 
 Master represents the latest version of the app. If you need to apply a hotfix for older version, e.g. latest version is 2.0.0 and you need a hotfix for 1.4.0:
 
+  * Change .travis.yml config to allow running deployment scripts on all branches (on: all_branches: true)
   * Create a hotfix branch, e.g. `hotfix/1.4`
   * Create a feature branch for the fix
   * Create a Pull Request to merge `feature/*` to `hotfix/1.4`
