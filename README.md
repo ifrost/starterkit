@@ -29,7 +29,7 @@
 
 ## Configure Travis CI
 
-  * Add GITHUB_API_KEY - GitHub / Profile / Settings / Personal Access Tokens (select public_repo)
+  * Add GITHUB_API_KEY - GitHub / Profile / Settings / Developer Settings / Personal Access Tokens (select public_repo)
   * Add NPM_API_KEY - authToken from ~/.npmrc
   * Add NPM_EMAIL - your email
   * Select Auto cancel branch builds
