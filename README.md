@@ -33,14 +33,9 @@
   * Add NPM_API_KEY - authToken from ~/.npmrc
   * Add NPM_EMAIL - your email
   * Select Auto cancel branch builds
-  * Select General section:
-    * Build only if .travis.yml is present
-    * Build branch updates
-    * Build pull request updates
  
 ## Create branches
 
-  * release
   * gh-pages
  
 ## Add project to:
